@@ -483,11 +483,10 @@ void MiniAnaB4Mu::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetu
     ///////////////Fill Trigger Vars, L1 and HLT///////////////
     
     cout << "I'm here L1" << endl;
-    gtUtil_->retrieveL1(iEvent, iSetup, algTok_);
+    gtUtil_->retrieveL1(iEvent, iSetup, algToken_);
     cout << "I'm here L1 bis" << endl;
     const vector<pair<string, bool> > initialDecisions = gtUtil_->decisionsInitial();
     const vector<pair<string, bool> > finalDecisions = gtUtil_->decisionsFinal();
-    const vector<pair<string, double> > PSValues = gtUtil_->prescales();
     
     if(initialDecisions.size() != finalDecisions.size())
         cout << "L1 initial and final decisions have different size!" << endl;
@@ -520,7 +519,7 @@ void MiniAnaB4Mu::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetu
                 Trigger_l1name.push_back( l1tName );
                 Trigger_l1Initialdecision.push_back( initialDecisions.at(i_l1t).second );
                 Trigger_l1Finaldecision.push_back( finalDecisions.at(i_l1t).second );
-                Trigger_l1prescale.push_back( PSValues.at(i_l1t).second );
+                Trigger_l1prescale.push_back(1);
             }
         }
     }
