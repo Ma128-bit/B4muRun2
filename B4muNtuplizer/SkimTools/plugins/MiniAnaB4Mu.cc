@@ -291,7 +291,7 @@ MiniAnaB4Mu::MiniAnaB4Mu(const edm::ParameterSet& iConfig){
     triggerObjects_ = consumes<std::vector<pat::TriggerObjectStandAlone> >(iConfig.getParameter<edm::InputTag>("objects"));
     algToken_ = consumes<BXVector<GlobalAlgBlk>>(iConfig.getParameter<edm::InputTag>("AlgInputTag"));
     algTok_ = consumes<BXVector<GlobalAlgBlk>>(iConfig.getParameter<edm::InputTag>("algInputTag"));
-    gtUtil_ = new l1t::L1TGlobalUtil(iConfig, consumesCollector(), *this, algTag_, extTag_, l1t::UseEventSetupIn::Event);
+    gtUtil_ = new l1t::L1TGlobalUtil(iConfig, consumesCollector(), *this, algInputTag_, algInputTag_);
     //
     token_BeamSpot = consumes<reco::BeamSpot>(edm::InputTag("offlineBeamSpot"));
     l1muonsToken_ = consumes<BXVector<l1t::Muon>>(edm::InputTag("gmtStage2Digis", "Muon"  , "RECO"));
@@ -1738,7 +1738,7 @@ void MiniAnaB4Mu::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetu
         //MuonID
         Muon_isGlobal.push_back(mu->isGlobalMuon());
         Muon_isSoft.push_back(mu->isSoftMuon(PV));
-        Muon_isMVA.push_back(mu->mvaIDValue());
+        Muon_isMVA.push_back(0);
         Muon_isMVASoft.push_back(mu->softMvaValue());
         Muon_isLoose.push_back(mu->isLooseMuon());
         Muon_isMedium.push_back(mu->isMediumMuon());
