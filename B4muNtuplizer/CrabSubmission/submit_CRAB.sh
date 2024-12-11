@@ -95,7 +95,7 @@ if [[ "$type" != *"MC"* ]]; then
         cd "${year}_type${type}"
         crab submit -c "CRAB_stream_${eras[${i}]}.py"
         cd ..
-        echo "Stream $i submitted!"
+        echo "Era eras[${i}] submitted!"
         sleep 3
     done
 else
