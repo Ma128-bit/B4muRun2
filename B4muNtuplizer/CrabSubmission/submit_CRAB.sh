@@ -87,7 +87,7 @@ if [[ "$type" != *"MC"* ]]; then
     for i in $(seq 0 $((${#eras[@]} - 1))); do
         cp templates/CRAB_template.py "${year}_type${type}/CRAB_stream_${eras[${i}]}.py"
         sed -i "s#YEAR#${year}#g" "${year}_type${type}/CRAB_stream_${eras[${i}]}.py"
-        sed -i "s#ERANAME#${type}#g" "${year}_type${type}/CRAB_stream_${eras[${i}]}.py"
+        sed -i "s#ERANAME#${eras[${i}]}_${type}#g" "${year}_type${type}/CRAB_stream_${eras[${i}]}.py"
         sed -i "s#NUMBER#${i}#g" "${year}_type${type}/CRAB_stream_${eras[${i}]}.py"
         sed -i "s#DATASET_ID#${Data_ID[${i}]}#g" "${year}_type${type}/CRAB_stream_${eras[${i}]}.py"
         sed -i "s#FILE_TO_SUBMIT_PATH#${path}#g" "${year}_type${type}/CRAB_stream_${eras[${i}]}.py"
