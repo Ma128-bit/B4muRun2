@@ -220,7 +220,7 @@ if [[ "$era" != *"MC"* ]]; then
     echo "Data ${year} - era ${era} is selected"
     path="${directory}/${year}_era${era}/PatAndTree_cfg.py"
     cp "${path_to_skim_file}/run_Data2022_PatAndTree_cfg.py" "$path"
-    sed -i "s#124X_dataRun3_v14#${globaltag}#g" "${year}_era${era}/PatAndTree_cfg.py"
+    #sed -i "s#106X_dataRun2_v37#${globaltag}#g" "${year}_era${era}/PatAndTree_cfg.py"
     cp templates/report.sh "${year}_era${era}/report.sh"
     cp templates/status.sh "${year}_era${era}/status.sh"
     cp templates/resubmit.sh "${year}_era${era}/resubmit.sh"
