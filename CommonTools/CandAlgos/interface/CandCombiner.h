@@ -86,7 +86,7 @@ namespace reco {
 			       "failed to parse \"" + decay + "\"");
 
 	int lists = labels_.size();
-	if(lists != 2 && lists != 3)
+	if(lists != 2 && lists != 3 && lists != 4)
 	  throw edm::Exception(edm::errors::LogicError,
 			       "invalid number of collections");
 	bool found;
