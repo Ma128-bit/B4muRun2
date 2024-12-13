@@ -1,16 +1,15 @@
 # !/bin/sh
 # Usage:
-#    prepare_condor.sh <Era> <Year> <Analysis_type> <Delta>
+#    prepare_condor.sh <Year> <Analysis_type> <Delta>
 
 helpstring="Usage:
-prepare_condor.sh [Era] [Year] [Analysis_type] [Delta]"
-era=$1
-year=$2
-Analysis_type=$3
-delta=$4
+prepare_condor.sh [Year] [Analysis_type] [Delta]"
+year=$1
+Analysis_type=$2
+delta=$3
 
 # Check inputs
-if [ -z ${4+x} ]; then
+if [ -z ${3+x} ]; then
     echo -e ${helpstring}
     return
 fi
