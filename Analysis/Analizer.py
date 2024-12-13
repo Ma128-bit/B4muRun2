@@ -242,6 +242,8 @@ if __name__ == "__main__":
     output_dir = args.directory_OUT
     isMC = args.isMC
     analysis_type = args.analysis_type
+    if analysis_type=="Norm":
+        analysis_type="B4mu"
 
     if not output_dir.endswith("/"):
         output_dir= output_dir + "/"

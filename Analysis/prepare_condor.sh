@@ -70,7 +70,7 @@ if [[ "$Analysis_type" != *"MC"* ]]; then
         cp templates/launch_analysis.sh "${home_directory}/${Analysis_type}/${year}/stream_${i}"
         sed -i "s#PATH#${home_directory}#g" "${home_directory}/${Analysis_type}/${year}/stream_${i}/launch_analysis.sh"
         sed -i "s#DELTAVAL#${delta}#g" "${home_directory}/${Analysis_type}/${year}/stream_${i}/launch_analysis.sh"
-        sed -i "s#INPUT_DIR#${file_directory}/ParkingDoubleMuonLowMass${i}/Skim${Ana_temp}_${year}era${era}_stream${i}_Mini/${datasets[${i}]}#g" "${home_directory}/${Analysis_type}/${year}/stream_${i}/launch_analysis.sh"
+        sed -i "s#INPUT_DIR#${file_directory}/${datasets}/${files[${i}]}/#g" "${home_directory}/${Analysis_type}/${year}/stream_${i}/launch_analysis.sh"
         sed -i "s#OUTPUT_DIR#${home_directory}/${Analysis_type}/${year}/stream_${i}#g" "${home_directory}/${Analysis_type}/${year}/stream_${i}/launch_analysis.sh"
         sed -i "s#TRUEFALSE#0#g" "${home_directory}/${Analysis_type}/${year}/stream_${i}/launch_analysis.sh"
         sed -i "s#ANALYSISTYPE#${Analysis_type}#g" "${home_directory}/${Analysis_type}/${year}/stream_${i}/launch_analysis.sh"
