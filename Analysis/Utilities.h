@@ -337,7 +337,7 @@ vector<int> B4mu_QuadSel(int isMC, uint64_t evt, ROOT::VecOps::RVec<float> MuonP
         double vz2 = Muon_vz.at(index.at(1));
         double vz3 = Muon_vz.at(index.at(2));
         double vz4 = Muon_vz.at(index.at(3));
-        if( !(isPairDeltaZGood(vz1, vz2, vz3, vz4, 1.2) )) continue;
+        //if( !(isPairDeltaZGood(vz1, vz2, vz3, vz4, 1.2) )) continue;
         
         //Cut2.2 CMS muon system acceptance
         bool acceptanceCUT = true;
