@@ -269,6 +269,8 @@ if __name__ == "__main__":
     branches=["evt", "isMC", "run", "lumi", "nPileUpInt", "PVCollection_Size"]
     rdf = rdf.Define("Quadruplet_index", flat0D_int(0), ["Quadruplet_indexs"])
     rdf = rdf.Filter("Quadruplet_index>-1")
+    rdf.Snapshot("FinalTree", output_dir + "Analyzed_Data_index_"+str(index)+".root", branches)
+    exit()
     
     rdf = Flat_MuVar(rdf, branches) #Flat muon pt eta phi
     if(analysis_type=="B4mu"):
