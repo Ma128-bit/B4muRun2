@@ -51,6 +51,7 @@ if [[ "$Analysis_type" != *"MC"* ]]; then
     cp templates/submit_era.sh "${home_directory}/${Analysis_type}/${year}"
     cp templates/hadd_era.sh "${home_directory}/${Analysis_type}/${year}"
     sed -i "s#YEARNAME#${year}#g" "${home_directory}/${Analysis_type}/${year}/submit_era.sh"
+    sed -i "s#MAXNJOB#${#files[@]}#g" "${home_directory}/${Analysis_type}/${year}/submit_era.sh"
     sed -i "s#YEARNAME#${year}#g" "${home_directory}/${Analysis_type}/${year}/hadd_era.sh"
 
     for i in $(seq 0 $((${#files[@]} - 1))); do
