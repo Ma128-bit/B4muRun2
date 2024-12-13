@@ -319,7 +319,7 @@ vector<int> B4mu_QuadSel(int isMC, uint64_t evt, ROOT::VecOps::RVec<float> MuonP
     
     for (int j=0; j<QuadrupletVtx_Chi2.size(); j++){
         // Pre-selections 
-        if(Mu1_Pt.at(j)==-99 || Mu2_Pt.at(j) == -99 || Mu3_Pt.at(j) == -99 || Mu4_Pt.at(j) == -99 || RefTrack1_Pt.at(j) == -99){ continue;}
+        //if(Mu1_Pt.at(j)==-99 || Mu2_Pt.at(j) == -99 || Mu3_Pt.at(j) == -99 || Mu4_Pt.at(j) == -99 || RefTrack1_Pt.at(j) == -99){ continue;}
         if(!((int)Quadruplet_Charge.at(j) == 0)) { continue;}
         //if(!(vtx_prob.at(j)>0 && FlightDistBS_SV_Significance.at(j)>4)){ continue;} 
         //if(!(vtx_prob.at(j)>0)){ continue;} 
