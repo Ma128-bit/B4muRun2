@@ -27,7 +27,7 @@ branches = [
     "mu3_bs_dxy_sig", "mu4_bs_dxy_sig", "vtx_prob", "Cos3d_PV_SV", "Cos3d_BS_SV", "Cos2d_PV_SV", 
     "Cos2d_BS_SV", "dR_max", "isJPsiPhi", "OS1v1_mass", "OS2v1_mass", "OS1v2_mass", "OS2v2_mass", 
     "OS1v1_mass_err", "OS2v1_mass_err", "OS1v2_mass_err", "OS2v2_mass_err", "Quadruplet_Mass_eq",
-    "RefittedSV_Mass", "RefittedSV_Mass_err","MVASoft1", "MVASoft2", "MVASoft3", "MVASoft4",
+    "RefittedSV_Mass", "RefittedSV_Mass_err",
     "OS1v1_Chi2", "OS2v1_Chi2", "OS1v2_Chi2", "OS2v2_Chi2"
 ]
 
@@ -108,12 +108,10 @@ if __name__ == "__main__":
     isB4mu, year, label = check_type()
     loadInfo("config/config_"+label+".txt")
 
-    pos = "/lustrehome/mbuonsante/B_4mu/CMSSW_13_0_13/src/Analysis/FinalFiles_B4mu_"+label+"/"
+    pos = "/lustrehome/mbuonsante/B_4muRun2/CMSSW_10_6_30/src/Analysis/"
     Files = {
-        "B4mu2022": [pos+"Analyzed_Data_B4mu_2022.root", pos+"Analyzed_MC_Bs_4mu_2022.root", pos+"Analyzed_MC_Bd_4mu_2022.root"],
-        "B4mu2023": [pos+"Analyzed_Data_B4mu_2023.root", pos+"Analyzed_MC_Bs_4mu_2023.root", pos+"Analyzed_MC_Bd_4mu_2023.root"],
-        "control2022": [pos+"Analyzed_Data_B4mu_2022.root", pos+"Analyzed_MC_BsJPsiPhi_2022.root"],
-        "control2023": [pos+"Analyzed_Data_B4mu_2023.root", pos+"Analyzed_MC_BsJPsiPhi_2023.root"]
+        "B4mu2017": [pos+"Norm/2017/Analyzed_Data_2017.root"],
+        "B4mu2018": [pos+"Norm/2018/"]
     }
 
     print("Starting!")
@@ -138,6 +136,7 @@ if __name__ == "__main__":
     df = df.Define("ctau_weight_heavy", add_new_ctau(ctau_heavy, ctau_pdg), ["ID", "Gen_ct_signal", "Gen_ct_control"])
     df = df.Define("ctau_weight_light", add_new_ctau(ctau_light, ctau_pdg), ["ID", "Gen_ct_signal", "Gen_ct_control"])
     
+    """
     h_vectors = std.vector(TH1F)()
     h_name = std.vector(TString)()
     histo_file = TFile.Open("PileUp/ratio_histo_"+str(year)+"_"+label+".root")
@@ -151,7 +150,7 @@ if __name__ == "__main__":
     
     df = df.Define("weight_pileUp", PV_WeightsComputer(h_name, h_vectors, False), ["ID", "nPileUpInt"])
     df = df.Define("weight_pileUp_err", PV_WeightsComputer(h_name, h_vectors, True), ["ID", "nPileUpInt"])    
-
+    """
     if not os.path.exists("ROOTFiles_"+label):
         subprocess.run(["mkdir", "ROOTFiles_"+label])
 
