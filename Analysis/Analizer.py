@@ -288,32 +288,9 @@ if __name__ == "__main__":
     if(analysis_type=="B4mu"):
         #rdf = DiMuVar(rdf, branches, vertex_chi2) #Define Di-Muon variables
         rdf = DiMuVar_2(rdf, branches) #Define Di-Muon variables
-        rdf, branches = HLT_quantities(rdf, branches)
-        rdf = Gen_ct(rdf, branches, analysis_type, isMC)
+        #rdf, branches = HLT_quantities(rdf, branches)
+        #rdf = Gen_ct(rdf, branches, analysis_type, isMC)
         #rdf = GenVar(rdf, branches, isMC) #Gen-Level variables for control channel
-
-    if(analysis_type!="B4mu"):
-        rdf = DiMassVar_control(rdf, branches, analysis_type)
-        rdf, branches = HLT_quantities(rdf, branches)
-        rdf = Gen_ct(rdf, branches, analysis_type, isMC)
-        #branches.append("PhiMassTest2K")
-        #branches.append("PhiMassTestKpi")
-        #branches.append("PhiMassTestKpi_test")
-        #rdf = rdf.Define("PhiMassTest2K", TwoObjMassFit(0.493677, 0.493677), ["RefTrack3_Pt", "RefTrack4_Pt", "RefTrack3_Eta", "RefTrack4_Eta","RefTrack3_Phi", "RefTrack4_Phi"])
-        #rdf = rdf.Define("PhiMassTestKpi", TwoObjMassFit(0.493677, 0.139570), ["RefTrack3_Pt", "RefTrack4_Pt", "RefTrack3_Eta", "RefTrack4_Eta","RefTrack3_Phi", "RefTrack4_Phi"])
-        #rdf = rdf.Define("PhiMassTestKpi_test", TwoObjMassFit(0.139570, 0.493677), ["RefTrack3_Pt", "RefTrack4_Pt", "RefTrack3_Eta", "RefTrack4_Eta","RefTrack3_Phi", "RefTrack4_Phi"])
-            
-    if(analysis_type!="B4mu" and isMC>0):
-        branches.append("genMatching2mu2trk")
-        rdf = rdf.Define("genMatching2mu2trk", "GenMatching2mu2trk(Mu1_Pt, Mu2_Pt, Mu3_Pt, Mu4_Pt, Mu1_Eta, Mu2_Eta, Mu3_Eta, Mu4_Eta, Mu1_Phi, Mu2_Phi, Mu3_Phi, Mu4_Phi, GenParticle_Pt_v2, GenParticle_Eta_v2, GenParticle_Phi_v2, GenParticle_Pt_trk, GenParticle_Eta_trk, GenParticle_Phi_trk, GenParticle_PdgId_trk)")
-        rdf = rdf.Filter("genMatching2mu2trk==2 || genMatching2mu2trk==1")
-        branches.append("genMatching2mu2trk_v2")
-        rdf = rdf.Define("genMatching2mu2trk_v2", "GenMatching_2mu2trk(Mu1_Pt, Mu2_Pt, Mu3_Pt, Mu4_Pt, Mu1_Eta, Mu2_Eta, Mu3_Eta, Mu4_Eta, Mu1_Phi, Mu2_Phi, Mu3_Phi, Mu4_Phi, GenParticle_Pt, GenParticle_Eta, GenParticle_Phi,  GenParticle_PdgId, GenParticle_MotherPdgId, GenParticle_GrandMotherPdgId)")
-    
-    if(analysis_type!="B4mu"):
-        rdf = rdf.Filter("RefittedSV_Mass>4.5 && RefittedSV_Mass<6.5")
-        rdf = rdf.Filter("Ditrk_mass>0.5 && Ditrk_mass<1.3")
-        rdf = rdf.Filter("Dimu_mass>2.6 && Dimu_mass<3.6")
     
     rdf.Snapshot("FinalTree", output_dir + "Analyzed_Data_index_"+str(index)+".root", branches)
     
