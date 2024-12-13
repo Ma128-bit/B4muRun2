@@ -411,7 +411,7 @@ vector<int> B4mu_QuadSel(int isMC, uint64_t evt, ROOT::VecOps::RVec<float> MuonP
         if(exit_code<6) exit_code=6;
         quad_indx.push_back(j);
     }
-    //cout<<evt<<", "<<exit_code<<endl;
+    cout<<evt<<", "<<exit_code<<endl;
     
     if(quad_indx.empty()) { quad_indx.push_back(-99); return quad_indx;}
 
