@@ -33,7 +33,8 @@ if [ "${Analysis_type}" == "Norm" ]; then
     fi
 elif [ "${Analysis_type}" == "B4mu" ]; then
     datasets="DoubleMuonLowMass"
-    fi
+    if [ "${year}" == "2017" ]; then
+        files=("${Data_2017[@]}")
     else
         echo "Error: The year is incorrect."
         return
